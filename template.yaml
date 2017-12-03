@@ -1,0 +1,43 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Simple CRUD webservice. State is stored in a SimpleTable (DynamoDB) resource.
+Parameters:
+  TOKEN:
+    Type: String
+    Description: TOKEN for Twitter application
+  TOKENSECRET:
+    Type: String
+    Description: TOKEN_SECRET for Twitter application
+  CONSUMERKEY:
+    Type: String
+    Description: CONSUMER_KEY for Twitter application
+  CONSUMERSECRET:
+    Type: String
+    Description: CONSUMER_SECRET for Twitter application
+  IncomingTopic:
+    Type: String
+    Default: 'iot/incoming/twitter'
+    Description: Name of the topic to get the Twilio input message from
+
+Resources:
+  IoTTwilioFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.lambda_handler
+      Runtime: python2.7
+      CodeUri: ./src/
+      Policies:
+        - AWSIoTRuleActions
+      Environment:
+        Variables:
+          REGION: !Ref AWS::Region
+          TOKEN: !Ref TOKEN
+          TOKEN_SECRET: !Ref TOKENSECRET
+          CONSUMER_KEY: !Ref CONSUMERKEY
+          CONSUMER_SECRET: !Ref CONSUMERSECRET
+          IncomingTopic: !Ref IncomingTopic
+      Events:
+        incomingRule:
+          Type: IoTRule
+          Properties:
+            Sql: !Join [ "", [ "SELECT deviceID, incomingText FROM '", !Ref IncomingTopic, "'" ] ]
