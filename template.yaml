@@ -17,7 +17,7 @@ Parameters:
   IncomingTopic:
     Type: String
     Default: 'iot/incoming/twitter'
-    Description: Name of the topic to get the Twilio input message from
+    Description: Name of the topic to get the Twitter input message from
 
 Resources:
   IoTTwilioFunction:
