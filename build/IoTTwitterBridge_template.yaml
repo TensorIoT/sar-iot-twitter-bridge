@@ -25,7 +25,7 @@ Resources:
     Properties:
       Handler: index.lambda_handler
       Runtime: python2.7
-      CodeUri: s3://tensoriot-sarapps-dist/IoTTwitterBridge_lambda.zip
+      CodeUri: s3://tensoriot-sarapps-dist-va/IoTTwitterBridge_lambda.zip
       Environment:
         Variables:
           REGION: !Ref AWS::Region
