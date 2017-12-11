@@ -1,0 +1,46 @@
+<h1 id="aws-iot-twitter-bridge-for-aws-serverless-application-repository">AWS IoT - Twitter Bridge for AWS Serverless Application Repository</h1>
+<p>This service provides a bridge between AWS IoT and Twitter for your devices to tweet messages directly to Twitter. </p>
+<p><img src="twitter.png" alt="AWS IoT - Twitter Bridge"></p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><strong><a href="#what-is-aws-serverless-application-repository">What is AWS Serverless Application Repository?</a></strong></li>
+<li><strong><a href="#use-cases">Use Cases</a></strong></li>
+<li><strong><a href="#prerequisites">Prerequisites</a></strong></li>
+<li><strong><a href="#setup">Setup</a></strong></li>
+<li><strong><a href="#use">Use</a></strong></li>
+<li><strong><a href="#license">License</a></strong></li>
+</ul>
+<h2 id="what-is-aws-serverless-application-repository-">What is AWS Serverless Application Repository?</h2>
+<p>The <a href="https://aws.amazon.com/serverless/serverlessrepo/">AWS Serverless Application Repository</a> is a collection of serverless applications ranging from code samples and components for building web and mobile applications to back-end processing services and complete applications. Each application is packaged with an <a href="https://github.com/awslabs/serverless-application-model">AWS Serverless Application Model (SAM)</a> template that defines the AWS resources used. The Serverless Application Repository enables you to quickly deploy these code samples, components, and applications for common use cases such as web and mobile back-ends, data processing, chatbots, IoT, and more.  There is no charge to use the Serverless Application Repository - you only pay for the AWS resources used in the applications you deploy.</p>
+<p>Check this <a href="https://youtu.be/ZguvcM_wqoo?t=1184">launch video</a> for more details.</p>
+<h2 id="use-cases">Use Cases</h2>
+<ol>
+<li>Create a user account for a specific device and tweet out messages directly (temperature, weather warnings, etc.)</li>
+<li>Create an alert topic and notify end users directly through Twitter.</li>
+<li>Alert admins on any event (new devices, high watermark, etc.) or any alert threshold being reached. </li>
+</ol>
+<h2 id="prerequisites">Prerequisites</h2>
+<ol>
+<li><a href="http://docs.aws.amazon.com/iot/latest/developerguide/topics.html">AWS IoT Topic</a> which will be used as the trigger for the lambda</li>
+<li>Sign up for a <a href="https://dev.twitter.com/">Twitter Developer account</a></li>
+<li>Create a new <a href="https://apps.twitter.com/">Twitter App</a></li>
+<li>Copy Consumer Key (API Key), Consumer Secret (API Secret), Access Token, Access Token Secret from &#39;Keys and Access Tokens&#39; tab. </li>
+</ol>
+<p><strong>NOTE</strong> - Keep the &quot;Consumer Secret&quot; a secret. This key should never be human-readable in your application. This access token can be used to make API requests on your own account&#39;s behalf. Do not share your access token secret with anyone.</p>
+<h2 id="setup">Setup</h2>
+<p>You will need the following information from the previous steps and configure them in the <a href="template.yaml">template.yaml</a> file</p>
+<ol>
+<li>CONSUMERKEY - Twitter app Consumer key.</li>
+<li>CONSUMERSECRET - Twitter app Consumer secret.</li>
+<li>TOKEN - Twitter app Token.</li>
+<li>TOKENSECRET - Twitter app Token secret.</li>
+<li>IncomingTopic - The topic that will be used as the trigger for the lambda.</li>
+</ol>
+<h2 id="use">Use</h2>
+<p>The following Input Format is expected from the IoT Topic to trigger the Twitter workflow</p>
+<pre><code>{
+    &quot;deviceID&quot;: &quot;deviceID123&quot;,
+    &quot;incomingText&quot;: &quot;Text From Device&quot;
+}
+</code></pre><h2 id="license">License</h2>
+<p>This is released under the MIT license. Details can be found in the <a href="LICENSE.md">LICENSE</a> file.</p>
