@@ -1,8 +1,8 @@
 # AWS IoT - Twitter Bridge for AWS Serverless Application Repository
 
-This service provides a bridge between AWS IoT and Twitter for your devices to tweet messages directly to Twitter. 
+This service provides a bridge between AWS IoT and Twitter for your devices to tweet messages directly to Twitter.
 
-![AWS IoT - Twitter Bridge](twitter.png)
+![AWS IoT - Twitter Bridge](https://s3.amazonaws.com/tensorimgs/public/twitter.png)
 
 ## Table of Contents
 * **[What is AWS Serverless Application Repository?](#what-is-aws-serverless-application-repository)**
@@ -20,13 +20,13 @@ Check this [launch video](https://youtu.be/ZguvcM_wqoo?t=1184) for more details.
 ## Use Cases
 1. Create a user account for a specific device and tweet out messages directly (temperature, weather warnings, etc.)
 1. Create an alert topic and notify end users directly through Twitter.
-1. Alert admins on any event (new devices, high watermark, etc.) or any alert threshold being reached. 
+1. Alert admins on any event (new devices, high watermark, etc.) or any alert threshold being reached.
 
 ## Prerequisites
 1. [AWS IoT Topic](http://docs.aws.amazon.com/iot/latest/developerguide/topics.html) which will be used as the trigger for the lambda
 1. Sign up for a [Twitter Developer account](https://dev.twitter.com/)
 1. Create a new [Twitter App](https://apps.twitter.com/)
-1. Copy Consumer Key (API Key), Consumer Secret (API Secret), Access Token, Access Token Secret from 'Keys and Access Tokens' tab. 
+1. Copy Consumer Key (API Key), Consumer Secret (API Secret), Access Token, Access Token Secret from 'Keys and Access Tokens' tab.
 
 **NOTE** - Keep the "Consumer Secret" a secret. This key should never be human-readable in your application. This access token can be used to make API requests on your own account's behalf. Do not share your access token secret with anyone.
 
@@ -38,7 +38,7 @@ You will need the following information from the previous steps and configure th
 1. TOKENSECRET - Twitter app Token secret.
 1. IncomingTopic - The topic that will be used as the trigger for the lambda.
 
-## Use 
+## Use
 The following Input Format is expected from the IoT Topic to trigger the Twitter workflow
 ```
 {
