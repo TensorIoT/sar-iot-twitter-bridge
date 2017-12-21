@@ -2,7 +2,7 @@
 
 This service provides a bridge between AWS IoT and Twitter for your devices to tweet messages directly to Twitter.
 
-![AWS IoT - Twitter Bridge](https://s3.amazonaws.com/tensorimgs/public/twitter.png)
+![AWS IoT - Twitter Bridge](twitter.png)
 
 ## Table of Contents
 * **[What is AWS Serverless Application Repository?](#what-is-aws-serverless-application-repository)**
